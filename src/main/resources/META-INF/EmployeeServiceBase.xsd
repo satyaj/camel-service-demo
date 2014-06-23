@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/EmployeeService" xmlns:tns="http://www.example.org/EmployeeService" elementFormDefault="qualified">
+
+
+	<xs:complexType name="EmployeeServiceType">
+		<xs:sequence>
+			<xs:element name="requestDate" type="xs:date"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="EmployeeServiceInfoType">
+		<xs:sequence>
+			<xs:element name="employeeId" type="xs:int"/>
+			<xs:element name="firstName" type="xs:string"/>
+			<xs:element name="lastName" type="xs:string"/>
+ 			<xs:element name="departmentLevel1" type="xs:string"/>
+ 			<xs:element name="filterKey" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:simpleType name="TaskType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="getEmployee" />
+			<xs:enumeration value="searchEmployee" />
+			<xs:enumeration value="getAndSearchEmployee" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+</xs:schema>

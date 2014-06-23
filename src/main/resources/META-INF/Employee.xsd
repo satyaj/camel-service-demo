@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.example.org/Employee" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="tns">
+<element name="Employees"></element>
+
+    <element name="EmployeeRecord">
+
+    <complexType>
+    	<sequence>
+    		<element name="EmployeeID" type="int" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="FirstName" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="LastName" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="DateOfBirth" type="date"></element>
+    		<element name="DepartmentLevel1" type="int"></element>
+    		<element name="FilterKey" minOccurs="1" maxOccurs="1">
+    			<simpleType>
+    				<restriction base="int"></restriction>
+    			</simpleType>
+    		</element>
+    		<element name="Dummy1" type="string"></element>
+    		<element name="Dummy2" type="string"></element>
+    		<element name="Dummy3" type="string"></element>
+    		<element name="Dummy4" type="string"></element>
+    		<element name="Dummy5" type="string"></element>
+    		<element name="Dummy6" type="string"></element>
+    		<element name="Dummy7" type="string"></element>
+    		<element name="Dummy8" type="string"></element>
+    		<element name="Dummy9" type="string"></element>
+    		<element name="Dummy10" type="string"></element>
+    		<element name="Dummy11" type="string"></element>
+    		<element name="Dummy12" type="string"></element>
+    		<element name="Dummy13" type="string"></element>
+    		<element name="Dummy14" type="string"></element>
+    	</sequence>
+    </complexType>
+
+
+    
+</element>
+</schema>

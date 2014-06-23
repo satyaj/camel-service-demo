@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ASCII"?>
+<routes xmlns="http://camel.apache.org/schema/spring">
+    <route>
+        <from uri="switchyard://EmployeeService"/>
+        <setExchangePattern pattern="InOut"/>
+        <convertBodyTo type="String"/>
+        <log message="SOAP message received : ${body} and operation : ${in.header.SOAPAction} "/>
+        <unmarshal ref="soapFormat">
+            <string charset="utf-8"/>
+        </unmarshal>
+        <choice>
+            <when>
+                <simple>${body} contains 'getEmployee'</simple>
+                <marshal ref="soapFormat">
+                    <description>&lt;bean ref="BeanService" method="getEmployee"/&gt;</description>
+                    <string/>
+                </marshal>
+                <log message=" In the 'getEmployee' operation"/>
+            </when>
+            <when>
+                <simple>${body} contains 'getAndSearchEmployee'</simple>
+                <log message=" In the 'searchAndGetEmployee' operation">
+                    <description>&lt;bean ref="BeanService" method="searchAndGetEmployee"/&gt;
+                &lt;marshal ref="soapFormat"/&gt;</description>
+                </log>
+            </when>
+            <when>
+                <description>&lt;bean ref="BeanService" method="searchEmployee"/&gt;
+                &lt;marshal ref="soapFormat"/&gt;
+                &lt;log message=" In the 'searchEmployee' operation"/&gt;</description>
+                <simple>${body} contains 'searchEmployee'</simple>
+            </when>
+            <otherwise>
+                <log message="In the otherwise operation : ${in.header.SOAPAction}"/>
+            </otherwise>
+        </choice>
+        <log message="SOAP message returned : ${body}"/>
+    </route>
+</routes>

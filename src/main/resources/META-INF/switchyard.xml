@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sy:switchyard xmlns:camel="urn:switchyard-component-camel:config:1.0" xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912" xmlns:soap="urn:switchyard-component-soap:config:1.0" xmlns:sy="urn:switchyard-config:switchyard:1.0" name="camel-service-demo" targetNamespace="urn:com.example.switchyard:camel-service-demo:1.0">
+  <sca:composite name="camel-service-demo" targetNamespace="urn:com.example.switchyard:camel-service-demo:1.0">
+    <sca:component name="Route">
+      <camel:implementation.camel>
+        <camel:xml path="META-INF/route.xml"/>
+      </camel:implementation.camel>
+      <sca:service name="EmployeeService">
+        <sca:interface.wsdl interface="META-INF/EmployeeService.wsdl#wsdl.porttype(EmployeeService)"/>
+      </sca:service>
+    </sca:component>
+    <sca:service name="EmployeeService" promote="Route/EmployeeService">
+      <sca:interface.wsdl interface="META-INF/EmployeeService.wsdl#wsdl.porttype(EmployeeService)"/>
+      <soap:binding.soap name="soap1">
+        <soap:wsdl>META-INF/EmployeeService.wsdl</soap:wsdl>
+      </soap:binding.soap>
+    </sca:service>
+  </sca:composite>
+</sy:switchyard>

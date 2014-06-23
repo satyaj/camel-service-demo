@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/EmployeeService" xmlns:tns="http://www.example.org/EmployeeService" elementFormDefault="qualified">
+
+
+	<include schemaLocation="./EmployeeServiceBase.xsd"/>
+	
+	<element name="EmployeeServiceFault">
+		<complexType>
+			<choice minOccurs="1" maxOccurs="1">
+				<element name="EmployeeServiceFault" type="tns:EmployeeServiceFaultType"/>
+			</choice>
+		</complexType>
+	</element>
+
+
+	<complexType name="EmployeeServiceFaultType">
+		<sequence>
+			<element name="code"  type="string"/>
+			<element name="reason"  type="string"/>
+		</sequence>
+	</complexType>
+
+</schema>

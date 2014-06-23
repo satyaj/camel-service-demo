@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/EmployeeService" xmlns:tns="http://www.example.org/EmployeeService" elementFormDefault="qualified">
+
+	<include schemaLocation="EmployeeServiceBase.xsd"/>
+
+	<element name="EmployeeServiceResponse">
+		<complexType>
+			<choice minOccurs="1" maxOccurs="1">
+				<element name="getEmployee" type="tns:GetEmployeeReplyType"/>
+				<element name="searchEmployee" type="tns:SearchEmployeeReplyType"/>
+				<element name="getAndSearchEmployee" type="tns:GetAndSearchEmployeeReplyType"/>
+			</choice>
+		</complexType>
+	</element>
+
+
+		<complexType name="GetEmployeeReplyType">
+		<complexContent>
+			<extension base="tns:EmployeeServiceType">
+				<sequence>
+					<element name="employeeServiceInfo" type="tns:EmployeeServiceInfoType"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	
+		<complexType name="SearchEmployeeReplyType">
+		<complexContent>
+			<extension base="tns:EmployeeServiceType">
+				<sequence>
+					<element name="employeeServiceInfo" type="tns:EmployeeServiceInfoType"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+		<complexType name="GetAndSearchEmployeeReplyType">
+		<complexContent>
+			<extension base="tns:EmployeeServiceType">
+				<sequence>
+					<element name="employeeServiceInfo" type="tns:EmployeeServiceInfoType"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+</schema>

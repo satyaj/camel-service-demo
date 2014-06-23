@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/EmployeeService" xmlns:tns="http://www.example.org/EmployeeService" elementFormDefault="qualified">
+
+	<include schemaLocation="EmployeeServiceBase.xsd"/>
+
+	<element name="EmployeeService">
+		<complexType>
+			<choice minOccurs="1" maxOccurs="1">
+				<element name="getEmployee" type="tns:GetEmployeeRequestType"/>
+				<element name="searchEmployee" type="tns:SearchEmployeeRequestType"/>
+				<element name="getAndSearchEmployee" type="tns:GetAndSearchEmployeeRequestType"/>
+			</choice>
+		</complexType>
+	</element>
+
+	
+		<complexType name="GetEmployeeRequestType">
+		<complexContent>
+			<extension base="tns:EmployeeServiceType">
+				<sequence>
+					<element name="task">
+						<simpleType>
+							<restriction base="tns:TaskType">
+								<enumeration value="getEmployee"/>
+							</restriction>
+						</simpleType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	
+		<complexType name="SearchEmployeeRequestType">
+		<complexContent>
+			<extension base="tns:EmployeeServiceType">
+				<sequence>
+					<element name="task">
+						<simpleType>
+							<restriction base="tns:TaskType">
+								<enumeration value="searchEmployee"/>
+							</restriction>
+						</simpleType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+		<complexType name="GetAndSearchEmployeeRequestType">
+		<complexContent>
+			<extension base="tns:EmployeeServiceType">
+				<sequence>
+					<element name="task">
+						<simpleType>
+							<restriction base="tns:TaskType">
+								<enumeration value="getAndSearchEmployee"/>
+							</restriction>
+						</simpleType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+</schema>	
